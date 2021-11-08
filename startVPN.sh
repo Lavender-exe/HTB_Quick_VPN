@@ -25,9 +25,9 @@ echo "
 
 echo ""
 echo " "
-echo " This wiill require Sudo access "
+echo " This will require Sudo access "
 echo " "
-echo -n " Emter your HTB username :" 
+echo -n " Enter your HTB username: " 
 read usrName
 echo " What VPN would you like to connect to $usrName ?"
 echo " "
@@ -59,7 +59,7 @@ press_enter() {
 }
 
 bad_option() {
-	echo " you have choosen an incorrect menu optiom....try again"
+	echo " you have choosen an incorrect menu option....try again"
 	clear
 }
 
