@@ -1,4 +1,4 @@
-# VPN Launcher
+# About This Tool
 A VPN Launcher to connect to HackTheBox and TryHackMe machines quickly.
 
 <b> Please put all of your vpn files into $HOME/vpn. </b>
@@ -6,16 +6,10 @@ If you have a different dir you have your files stored in, you can simply change
 
 Based on the [HTB Quick VPN](https://github.com/tux3d0/HTB_Quick_VPN) Repo from tux3do
 
-# Customisation:
+# Quick Launch
 
-You can select the VPNs from your current working directory by removing `$HOME/vpn`
+You can add this tool to your `~/.bashrc` quickly by using this command:
 
-```sh
-[-] starterPoint() {
-	sudo openvpn $HOME/vpn/starting_point_$usrName.ovpn
-}
-[+] starterPoint() {
-	sudo openvpn starting_point_$usrName.ovpn
-}
+```bash
+echo "alias hermes='PATH/TO/FILE/Hermes.sh'" >> ~/.bashrc
 ```
-This can also be used to select any folder you want instead of the home directory.
