@@ -1,15 +1,31 @@
-# About This Tool
+# Hermes - VPN Connection Simplifier
+
+## About This Tool
 A VPN Launcher to connect to HackTheBox and TryHackMe machines quickly.
 
-<b> Please put all of your vpn files into $HOME/vpn. </b>
-If you have a different dir you have your files stored in, you can simply change the paths and or file name in the script.
+<b> Please put all of your vpn files into $HOME/OpenVPN. </b>
+The tool will create a directory called OpenVPN in your home directory then move all of your VPNs to their respective folders
 
 Based on the [HTB Quick VPN](https://github.com/tux3d0/HTB_Quick_VPN) Repo from tux3do
 
-# Quick Launch
+## Quick Launch
 
 You can add this tool to your `~/.bashrc` quickly by using this command:
 
 ```bash
-echo "alias hermes='PATH/TO/FILE/Hermes.sh'" >> ~/.bashrc
+echo "alias hermes='sudo bash PATH/TO/FILE/Hermes.sh'" >> ~/.bashrc
 ```
+
+## Installation
+
+```bash
+git clone https://github.com/Lavender-exe/Hermes.git
+chmod +x Hermes.sh
+```
+
+## Usage 
+
+1. Run the tool using `hermes` 
+3. Insert your username and select your platform
+4. Press enter then `Option 0` to close the application - your VPN should be running in the background.
+5. To check, do `ps aux | grep 'openvpn'`
