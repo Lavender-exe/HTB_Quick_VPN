@@ -1,23 +1,28 @@
 #!/bin/bash
 
-# This script will create a folder for you to put your VPNs in so you can run them using this tool.
+# Check if Root
 
-# Creates missing dirs (Before root cause file permissions)
+if (( $EUID != 0 )); then
+    echo "Please run as root"
+    exit
+fi
+
+# Creates missing dirs
 
 if [ ! -d "OpenVPN" ]; then
 	echo "Creating VPN Directory"
 	echo "[+] Creating OpenVPN"
-	mkdir ./OpenVPN
+	sudo mkdir $HOME/OpenVPN
 fi
 
 if [ ! -d "OpenVPN/HackTheBox" ]; then
 	echo "[+] Creating OpenVPN/HackTheBox"
-	mkdir ./OpenVPN/HackTheBox
+	sudo mkdir $HOME/OpenVPN/HackTheBox
 fi
 
 if [ ! -d "OpenVPN/TryHackMe" ]; then
 	echo "[+] Creating OpenVPN/TryHackMe"
-	mkdir ./OpenVPN/TryHackMe
+	sudo mkdir $HOME/OpenVPN/TryHackMe
 fi
 
 # Check if files exist on current directory - if yes move them to their folders
@@ -26,36 +31,29 @@ fi
 
 if [ -e starting_point_*.ovpn ]; then
 	echo "[!] Moving Starting Point VPN to OpenVPN/HackTheBox/"
-	mv starting_point_*.ovpn OpenVPN/HackTheBox/
+	sudo mv starting_point_*.ovpn $HOME/OpenVPN/HackTheBox/
 fi
 
 if [ -e lab_*.ovpn ]; then
 	echo "[!] Moving Machines VPN to OpenVPN/HackTheBox/"
-	mv lab_*.ovpn OpenVPN/HackTheBox/
+	sudo mv lab_*.ovpn $HOME/OpenVPN/HackTheBox/
 fi
 
 if [ -e endgames_*.ovpn ]; then
 	echo "[!] Moving End Games VPN to OpenVPN/HackTheBox/"
-	mv endgames_*.ovpn OpenVPN/HackTheBox/
+	sudo mv endgames_*.ovpn $HOME/OpenVPN/HackTheBox/
 fi
 
 if [ -e fortress_*.ovpn ]; then
 	echo "[!] Moving Fortress VPN to OpenVPN/HackTheBox/"
-	mv fortress_*.ovpn OpenVPN/HackTheBox/
+	sudo mv fortress_*.ovpn $HOME/OpenVPN/HackTheBox/
 fi
 
 # TryHackMe - Leaving this last because it might move all the vpns that exist to the thm folder too
 
 if [ -e *.ovpn ]; then
 	echo "[!] Moving TryHackMe VPN to OpenVPN/TryHackMe/"
-	mv *.ovpn OpenVPN/TryHackMe/
-fi
-
-# Check if Root
-
-if (( $EUID != 0 )); then
-    echo "Please run as root"
-    exit
+	sudo mv *.ovpn $HOME/OpenVPN/TryHackMe/
 fi
 
 echo "Done!"
@@ -83,35 +81,35 @@ echo " "
 # Starter labs VIP VPN
 
 startingPoint() {
-	sudo openvpn OpenVPN/HackTheBox/starting_point_$usrName.ovpn &
+	sudo openvpn $HOME/OpenVPN/HackTheBox/starting_point_$usrName.ovpn & disown
 }
 
 # Machine Labs VPN
 
 machines() {
-	sudo openvpn OpenVPN/HackTheBox/lab_$usrName.ovpn &
+	sudo openvpn $HOME/OpenVPN/HackTheBox/lab_$usrName.ovpn & disown
 }
 
 # End Games VPN
 endGames() {
-	sudo openvpn OpenVPN/HackTheBox/endgames_$usrName.ovpn &
+	sudo openvpn $HOME/OpenVPN/HackTheBox/endgames_$usrName.ovpn & disown
 }
 
 # Release Arena VPN
 releaseArena() {
-	sudo openvpn OpenVPN/HackTheBox/release_arena_$usrName.ovpn &
+	sudo openvpn $HOME/OpenVPN/HackTheBox/release_arena_$usrName.ovpn & disown
 }
 
 # Fortresses Labs VPN
 
 fortresses() {
-	sudo openvpn OpenVPN/HackTheBox/fortresses_$usrName.ovpn &
+	sudo openvpn $HOME/OpenVPN/HackTheBox/fortresses_$usrName.ovpn & disown
 }
 
 # TryHackMe
 
 tryhackme() {
-	sudo openvpn OpenVPN/TryHackMe/$usrName.ovpn &
+	sudo openvpn $HOME/OpenVPN/TryHackMe/$usrName.ovpn & disown
 }
 
 # Case Options 
