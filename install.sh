@@ -24,8 +24,8 @@ echo "Adding Permissions"
 chmod +x /opt/Hermes/Hermes.sh
 
 echo "Adding shortcut as 'hermes'"
-echo "alias hermes='sudo /opt/Hermes/Hermes.sh'" >> ~/.zshrc
-echo "alias hermes='sudo /opt/Hermes/Hermes.sh'" >> ~/.bashrc
+echo "alias hermes='sudo bash /opt/Hermes/Hermes.sh'" >> ~/.zshrc
+echo "alias hermes='sudo bash /opt/Hermes/Hermes.sh'" >> ~/.bashrc
 
 echo "Done!"
 exit
