@@ -3,8 +3,8 @@
 ## About This Tool
 A VPN Launcher to connect to HackTheBox and TryHackMe machines quickly.
 
-<b> Please put all of your vpn files into $HOME/OpenVPN. </b>
-The tool will create a directory called OpenVPN in your home directory then move all of your VPNs to their respective folders (If they are in the current directory)
+<b> Please put all of your vpn files into The hermes folder. </b>
+The tool will create a directory called OpenVPN in your home directory then move all of your VPNs to their respective folders (If they are in the Hermes directory)
 
 *You will have to put the VPNs in the folders manually otherwise for this to work*
 
